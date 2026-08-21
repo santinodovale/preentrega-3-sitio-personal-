@@ -153,6 +153,7 @@
   color: #1E3A5F;
   font-size: 1.15rem;
   font-weight: 700;
+  margin: 0.5rem;
 }
 
 .feature-card,
@@ -202,7 +203,7 @@
   margin-top: 2rem;
 }
 
-@media (max-width: 1496px) {
+@media (max-width: 1244px) {
   .site-header,
   .site-footer {
     flex-direction: column;
@@ -237,8 +238,9 @@
   }
 
   .tag-list li {
-    font-size: 0.9rem;
-    padding: 0.45rem 0.75rem;
+    font-size: 1rem;
+    padding: 0.65rem 0.95rem;
+    margin: 1rem;
   }
 }
 
