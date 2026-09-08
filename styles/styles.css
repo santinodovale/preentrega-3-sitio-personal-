@@ -64,8 +64,12 @@
 
 .site-header a,
 .site-footer a {
+  display: inline-block;
   color: #FFFFFF;
   text-decoration: none;
+  padding: 0.2rem 0.35rem;
+  border-radius: 0.25rem;
+  transition: color 0.2s ease, transform 0.2s ease;
 }
 
 .site-nav ul,
@@ -83,6 +87,20 @@
 .site-footer a:hover,
 .site-footer a:focus-visible {
   color: #E07A3F;
+  background-color: rgba(224, 122, 63, 0.16);
+  transform: translateY(-0.15rem);
+}
+
+.site-nav a:focus,
+.site-footer a:focus {
+  outline: 2px solid #E07A3F;
+  outline-offset: 0.2rem;
+}
+
+.site-nav a:active,
+.site-footer a:active {
+  color: #F4B183;
+  transform: scale(0.96);
 }
 
 /* Contenido principal */
@@ -90,6 +108,10 @@
   width: min(100% - 1rem, 1900px);
   margin: 0 auto;
   padding: 1.5rem 0;
+}
+
+.site-main p {
+  margin-bottom: 0;
 }
 
 .content-section,
@@ -107,7 +129,7 @@
 .site-main h1,
 .site-main h2,
 .site-main h3 {
-  margin-top: 0;
+  margin: 0;
   font-family: 'Space Grotesk', Arial, sans-serif;
   color: #1E3A5F;
 }
@@ -115,7 +137,6 @@
 .site-main h1 {
   font-size: clamp(2.25rem, 6vw, 4rem);
   line-height: 1.1;
-  margin: 1rem;
 }
 
 .site-main h2 {
@@ -176,7 +197,6 @@
 
 .intro-copy p {
   max-width: 38rem;
-  margin: 1rem auto;
   font-size: clamp(1.05rem, 1.2vw, 1.4rem);
   text-align: center;
 }
@@ -217,6 +237,13 @@
   font-size: clamp(0.9rem, 0.8vw, 1.1rem);
   font-weight: 700;
   margin: 0.5rem 0;
+  transition: transform 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.tag-list li:hover {
+  background-color: #c9dcf0;
+  transform: scale(1.08);
+  box-shadow: 0 0.2rem 0.5rem rgba(30, 58, 95, 0.14);
 }
 .feature-card,
 .project-card,
@@ -225,6 +252,15 @@
   display: flex;
   flex-direction: column;
   gap: 0.75rem;
+  transition: transform 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.feature-card:active,
+.project-card:active,
+.info-card:active,
+.contact-card:active {
+  transform: scale(0.98);
+  background-color: #eef3f8;
 }
 
 .site-main ul,
@@ -239,6 +275,17 @@
 .site-main a {
   color: #1E3A5F;
   font-weight: 700;
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.site-main a:focus {
+  outline: 2px solid #E07A3F;
+  outline-offset: 0.2rem;
+}
+
+.site-main a:active {
+  color: #E07A3F;
+  transform: scale(0.96);
 }
 
 /* Imagenes y pie de pagina */
@@ -249,7 +296,8 @@
 .site-main img {
   display: block;
   width: 100%;
-  height: auto;
+  height: 37.8rem;
+  object-fit: cover;
   border-radius: 0.5rem;
 }
 
@@ -272,8 +320,8 @@
   }
 
   .site-main {
-    width: min(100% - 2rem, 2000px);
-    padding: 3rem 0;
+    width: min(80% - 2rem, 2000px);
+    padding: 1rem 0;
   }
 
   .content-section,
@@ -292,6 +340,16 @@
   .contact-grid {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 3rem;
+  }
+
+  .feature-grid {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 1.5rem;
+  }
+
+  .skills-grid {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
     gap: 1.5rem;
   }
 
@@ -301,6 +359,26 @@
   .contact-card {
     height: auto;
     min-height: 180px;
+    width: 90%;
+    justify-self: center;
+    aspect-ratio: 10 / 11;
+    font-size: 1.1rem;
+    transition: transform 0.25s ease, box-shadow 0.25s ease, background-color 0.25s ease;
+  }
+
+  .feature-card:hover,
+  .feature-card:focus-within,
+  .project-card:hover,
+  .project-card:focus-within,
+  .info-card:hover,
+  .info-card:focus-within,
+  .contact-card:hover,
+  .contact-card:focus-within {
+    position: relative;
+    z-index: 1;
+    transform: scale(1.10);
+    background-color: #eef3f8;
+    box-shadow: 0 0.5rem 1.25rem rgba(30, 58, 95, 0.16);
   }
 }
 
