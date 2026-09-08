@@ -1,0 +1,25 @@
+@use '../utilities/variables' as vars;
+
+.site-body {
+  color: vars.$color-text;
+  font-family: vars.$font-body;
+  font-size: vars.$font-size-body;
+  line-height: 1.6;
+}
+
+.site-main h1,
+.site-main h2,
+.site-main h3 {
+  margin: 0;
+  color: vars.$color-primary;
+  font-family: vars.$font-heading;
+}
+
+.site-main h1 {
+  font-size: clamp(2.25rem, 6vw, 4rem);
+  line-height: 1.1;
+}
+
+.site-main h2 {
+  font-size: 1.65rem;
+}

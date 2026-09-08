@@ -1,0 +1,24 @@
+@use 'variables' as vars;
+@use 'sass:list';
+
+@mixin interactive-transition($properties...) {
+  $transitions: ();
+
+  @each $property in $properties {
+    $transitions: list.append($transitions, #{$property} vars.$transition-fast, comma);
+  }
+
+  transition: $transitions;
+}
+
+@mixin focus-ring {
+  outline: 2px solid vars.$color-accent;
+  outline-offset: vars.$space-xs;
+}
+
+@mixin card-surface {
+  background-color: vars.$color-surface-muted;
+  border: 1px solid vars.$color-border;
+  border-radius: vars.$radius-lg;
+  box-shadow: 0 0.25rem 0.9rem vars.$color-shadow-muted;
+}

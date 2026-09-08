@@ -1,0 +1,168 @@
+@use '../utilities/variables' as vars;
+@use '../utilities/mixins' as mixins;
+
+.content-section,
+.content-article {
+  display: flex;
+  flex-direction: column;
+  gap: vars.$space-xl;
+  margin-bottom: vars.$space-4xl;
+  padding: vars.$space-3xl;
+  background-color: vars.$color-surface;
+  border-radius: vars.$radius-lg;
+  box-shadow: 0 0.25rem 1rem vars.$color-shadow;
+}
+
+.intro-layout,
+.feature-grid,
+.project-grid,
+.info-grid,
+.contact-grid {
+  display: flex;
+  flex-direction: column;
+  gap: vars.$space-2xl;
+  align-items: stretch;
+}
+
+.intro-copy,
+.feature-card,
+.project-card,
+.info-card,
+.contact-card {
+  flex: 1 1 auto;
+  width: 100%;
+  max-width: 100%;
+  padding: vars.$space-xl;
+  @include mixins.card-surface;
+}
+
+.intro-copy {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  padding: vars.$space-2xl;
+  font-size: 1.2rem;
+}
+
+.intro-copy p {
+  max-width: 38rem;
+  font-size: clamp(1.05rem, 1.2vw, 1.4rem);
+  text-align: center;
+}
+
+.intro-copy .tag-list {
+  margin-top: vars.$space-xs;
+}
+
+.intro-copy .separator {
+  display: block;
+  margin: vars.$space-xl auto vars.$space-2xl;
+  color: vars.$color-accent;
+  font-size: 1.5rem;
+  line-height: 1;
+}
+
+.feature-card,
+.project-card,
+.info-card,
+.contact-card {
+  display: flex;
+  flex-direction: column;
+  gap: vars.$space-md;
+  transition: transform vars.$transition-fast, background-color vars.$transition-fast, box-shadow vars.$transition-fast;
+}
+
+.feature-card:active,
+.project-card:active,
+.info-card:active,
+.contact-card:active {
+  transform: scale(0.98);
+  background-color: vars.$color-surface-hover;
+}
+
+.tag-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: vars.$space-md;
+  margin-top: vars.$space-xl;
+  list-style: none;
+}
+
+.tag-list li {
+  margin: vars.$space-sm 0;
+  padding: vars.$space-sm vars.$space-md;
+  border-radius: vars.$radius-pill;
+  background-color: vars.$color-tag;
+  color: vars.$color-primary;
+  font-size: clamp(0.9rem, 0.8vw, 1.1rem);
+  font-weight: 700;
+  @include mixins.interactive-transition(transform, background-color, box-shadow);
+}
+
+.tag-list li:hover {
+  background-color: vars.$color-tag-hover;
+  transform: scale(1.08);
+  box-shadow: 0 0.2rem 0.5rem vars.$color-shadow-hover;
+}
+
+@media (min-width: vars.$desktop-breakpoint) {
+  .content-section,
+  .content-article {
+    padding: vars.$space-3xl;
+  }
+
+  .intro-layout {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+  }
+
+  .feature-grid,
+  .project-grid,
+  .info-grid,
+  .contact-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: vars.$space-grid;
+  }
+
+  .feature-grid,
+  .skills-grid {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: vars.$space-2xl;
+  }
+
+  .feature-card,
+  .project-card,
+  .info-card,
+  .contact-card {
+    height: auto;
+    min-height: 180px;
+    width: 90%;
+    justify-self: center;
+    aspect-ratio: 10 / 11;
+    font-size: 1.1rem;
+    transition: transform vars.$transition-card, box-shadow vars.$transition-card, background-color vars.$transition-card;
+  }
+
+  .info-card {
+    aspect-ratio: auto;
+  }
+
+  .feature-card:hover,
+  .feature-card:focus-within,
+  .project-card:hover,
+  .project-card:focus-within,
+  .info-card:hover,
+  .info-card:focus-within,
+  .contact-card:hover,
+  .contact-card:focus-within {
+    position: relative;
+    z-index: 1;
+    transform: scale(1.20);
+    background-color: vars.$color-surface-hover;
+    box-shadow: 0 0.5rem 1.25rem vars.$color-shadow-hover;
+  }
+}

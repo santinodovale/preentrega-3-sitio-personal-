@@ -1,0 +1,79 @@
+@use '../utilities/variables' as vars;
+
+.site-nav ul,
+.site-footer nav ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: vars.$space-md vars.$space-xl;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.site-header .site-nav a[aria-current='page'] {
+  color: vars.$color-accent-light;
+  box-shadow: inset 0 -2px 0 vars.$color-accent-light;
+}
+
+.site-header .site-nav a[aria-current='page']:hover,
+.site-header .site-nav a[aria-current='page']:focus-visible {
+  color: vars.$color-surface;
+  box-shadow: inset 0 -2px 0 vars.$color-surface;
+}
+
+.menu-checkbox {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.menu-toggle {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 3rem;
+  height: 2.5rem;
+  padding: 0;
+  color: vars.$color-surface;
+  font-size: 1.5rem;
+  line-height: 1;
+  border: none;
+  border-radius: vars.$radius-md;
+  cursor: pointer;
+}
+
+@media (max-width: vars.$desktop-breakpoint - 1px) {
+  .menu-toggle {
+    display: flex;
+    align-self: center;
+    flex: 0 0 auto;
+    font-size: 1.75rem;
+  }
+
+  .site-header {
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: stretch;
+    justify-content: space-between;
+  }
+
+  .site-header > p {
+    flex: 1 1 auto;
+  }
+
+  .site-header .site-nav {
+    display: none;
+    width: 100%;
+    flex-basis: 100%;
+    padding-top: vars.$space-lg;
+  }
+
+  .site-header .menu-checkbox:checked ~ .site-nav {
+    display: block;
+  }
+
+  .site-header .site-nav ul {
+    flex-direction: column;
+    gap: vars.$space-sm;
+  }
+}
