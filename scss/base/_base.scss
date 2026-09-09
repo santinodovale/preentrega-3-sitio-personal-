@@ -61,6 +61,16 @@
   border-radius: vars.$radius-lg;
 }
 
+.site-main figure img {
+  transition: transform vars.$transition-fast, filter vars.$transition-fast, box-shadow vars.$transition-fast;
+}
+
+.site-main figure:hover img {
+  transform: scale(1.035);
+  filter: saturate(1.08);
+  box-shadow: 0 0.8rem 1.8rem vars.$color-shadow-hover;
+}
+
 .site-main figcaption {
   margin-top: vars.$space-sm;
   color: vars.$color-text-muted;

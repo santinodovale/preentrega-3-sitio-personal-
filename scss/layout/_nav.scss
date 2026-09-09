@@ -62,18 +62,30 @@
   }
 
   .site-header .site-nav {
-    display: none;
+    display: block;
     width: 100%;
     flex-basis: 100%;
-    padding-top: vars.$space-lg;
+    max-height: 0;
+    overflow: hidden;
+    padding-top: 0;
+    opacity: 0;
+    transform: translateY(-0.75rem);
+    transition: max-height 420ms ease, padding-top 280ms ease, opacity 280ms ease, transform 280ms ease;
   }
 
   .site-header .menu-checkbox:checked ~ .site-nav {
-    display: block;
+    max-height: 21rem;
+    padding-top: vars.$space-lg;
+    opacity: 1;
+    transform: translateY(0);
   }
 
   .site-header .site-nav ul {
     flex-direction: column;
     gap: vars.$space-sm;
+  }
+
+  .site-header .site-nav a {
+    transition: color vars.$transition-fast, background-color vars.$transition-fast, transform vars.$transition-fast;
   }
 }

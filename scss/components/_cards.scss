@@ -1,6 +1,20 @@
 @use '../utilities/variables' as vars;
 @use '../utilities/mixins' as mixins;
 
+%card-base {
+  flex: 1 1 auto;
+  width: 100%;
+  max-width: 100%;
+  padding: vars.$space-xl;
+  @include mixins.card-surface;
+}
+
+%card-article {
+  display: flex;
+  flex-direction: column;
+  gap: vars.$space-md;
+}
+
 .content-section,
 .content-article {
   display: flex;
@@ -29,11 +43,7 @@
 .project-card,
 .info-card,
 .contact-card {
-  flex: 1 1 auto;
-  width: 100%;
-  max-width: 100%;
-  padding: vars.$space-xl;
-  @include mixins.card-surface;
+  @extend %card-base;
 }
 
 .intro-copy {
@@ -67,9 +77,7 @@
 .project-card,
 .info-card,
 .contact-card {
-  display: flex;
-  flex-direction: column;
-  gap: vars.$space-md;
+  @extend %card-article;
   transition: transform vars.$transition-fast, background-color vars.$transition-fast, box-shadow vars.$transition-fast;
 }
 
@@ -79,6 +87,16 @@
 .contact-card:active {
   transform: scale(0.98);
   background-color: vars.$color-surface-hover;
+}
+
+.reveal-card {
+  opacity: 0;
+  transform: translateY(1rem);
+}
+
+.reveal-card.visible {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .tag-list {
@@ -106,6 +124,53 @@
   background-color: vars.$color-tag-hover;
   transform: scale(1.08);
   box-shadow: 0 0.2rem 0.5rem vars.$color-shadow-hover;
+}
+
+.site-main .content-section img,
+.site-main .content-article img,
+.site-main .site-main img {
+  animation: softenImage 680ms ease-out both;
+}
+
+@keyframes softenImage {
+  from {
+    opacity: 0.72;
+    transform: scale(0.985);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@media (max-width: vars.$desktop-breakpoint - 1px) {
+  .content-section,
+  .content-article {
+    padding: vars.$space-xl;
+  }
+
+  .site-main img {
+    height: auto;
+    min-height: 14rem;
+  }
+
+  .intro-copy p {
+    text-align: left;
+  }
+
+  .feature-grid,
+  .project-grid,
+  .info-grid,
+  .contact-grid {
+    align-content: center;
+  }
+
+  .feature-card,
+  .project-card,
+  .info-card,
+  .contact-card {
+    min-height: 10rem;
+  }
 }
 
 @media (min-width: vars.$desktop-breakpoint) {
@@ -147,6 +212,12 @@
     transition: transform vars.$transition-card, box-shadow vars.$transition-card, background-color vars.$transition-card;
   }
 
+  .contact-grid .contact-card {
+    width: 100%;
+    min-height: 9rem;
+    aspect-ratio: auto;
+  }
+
   .info-card {
     aspect-ratio: auto;
   }
@@ -164,5 +235,6 @@
     transform: scale(1.20);
     background-color: vars.$color-surface-hover;
     box-shadow: 0 0.5rem 1.25rem vars.$color-shadow-hover;
+    border-color: vars.$color-accent;
   }
 }
