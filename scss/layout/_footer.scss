@@ -5,9 +5,9 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: vars.$space-lg;
+  gap: vars.$space-2xl;
   margin-top: vars.$space-4xl;
-  padding: vars.$space-xl 8%;
+  padding: vars.$space-2xl 8%;
   background-color: vars.$color-primary;
   color: vars.$color-surface;
 }

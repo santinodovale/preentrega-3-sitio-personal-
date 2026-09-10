@@ -4,6 +4,7 @@
 .site-footer nav ul {
   display: flex;
   flex-wrap: wrap;
+  align-items: center;
   gap: vars.$space-md vars.$space-xl;
   margin: 0;
   padding: 0;
@@ -48,17 +49,29 @@
     align-self: center;
     flex: 0 0 auto;
     font-size: 1.75rem;
+    min-width: 3rem;
+    height: 2.5rem;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
   }
 
   .site-header {
     flex-direction: row;
     flex-wrap: wrap;
-    align-items: stretch;
+    align-items: center;
     justify-content: space-between;
+    min-height: 4.2rem;
   }
 
   .site-header > p {
     flex: 1 1 auto;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    min-height: 2.5rem;
+    margin: 0;
+    line-height: 2.5rem;
   }
 
   .site-header .site-nav {
@@ -82,7 +95,12 @@
 
   .site-header .site-nav ul {
     flex-direction: column;
+    align-items: flex-start;
     gap: vars.$space-sm;
+  }
+
+  .site-header .site-nav ul li {
+    width: 100%;
   }
 
   .site-header .site-nav a {

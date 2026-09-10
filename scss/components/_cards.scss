@@ -205,11 +205,16 @@
   .contact-card {
     height: auto;
     min-height: 180px;
-    width: 90%;
+    width: 100%;
     justify-self: center;
-    aspect-ratio: 10 / 11;
+    aspect-ratio: auto;
     font-size: 1.1rem;
     transition: transform vars.$transition-card, box-shadow vars.$transition-card, background-color vars.$transition-card;
+  }
+
+  .project-card {
+    width: 100%;
+    aspect-ratio: auto;
   }
 
   .contact-grid .contact-card {
